@@ -6,7 +6,11 @@
     </nav> -->
     <div class="cursor"></div>
     <header-view />
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
     <footer-view />
   </div>
 </template>
@@ -23,7 +27,7 @@ import FooterView from "@/views/FooterView.vue";
 })
 export default class HomeView extends Vue {
   mounted() {
-    var cursor:HTMLDivElement|any = document.querySelector(".cursor");
+    var cursor: HTMLDivElement | any = document.querySelector(".cursor");
     document.addEventListener("mousemove", function (dets) {
       cursor.style.left = dets.x + 5 + "px";
       cursor.style.top = dets.y + 5 + "px";

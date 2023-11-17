@@ -7,6 +7,7 @@
           v-for="(img, index) in data.imgSrc"
           :key="index"
           @click="currentSrc = img"
+          :id="'img'+index"
         >
           <img :src="img" />
         </div>
@@ -175,12 +176,31 @@ export default {
     },
   },
   mounted() {
-    gsap.from("#img-list", {
-      scrollTrigger: ".detail-page",
-      x: -900,
-      duration: 1,
-      start: "50% 50%",
+  let tl1 = gsap.timeline();
+    // gsap.from("#img-list", {
+    //   scrollTrigger: ".detail-page",
+    //   x: -900,
+    //   duration: 1,
+    //   start: "50% 50%",
+    // });
+
+    gsap.from("#img0", {
+      x: 900,
+      duration: 0.5,
     });
+    gsap.from("#img1", {
+      x: 900,
+      duration: 0.8,
+    });
+    gsap.from("#img2", {
+      x: 900,
+      duration: 1.1,
+    });
+    gsap.from("#img3", {
+      x: 900,
+      duration:1.5,
+    });
+
 
     gsap.from("#offer-item1", {
       scrollTrigger: ".body-1",
